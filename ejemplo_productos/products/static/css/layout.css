@@ -1,0 +1,67 @@
+/* layout.css */
+body {
+    background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+    color: #3f3697;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Encabezados con tipografía retro y sombra */
+h1, h2 {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilos para el header */
+header {
+    background-color: #ffcb05;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #3b4cca;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Botón estilo Pokedex */
+.btn-pokedex {
+    background-color: #3b4cca;
+    color: #ffcb05;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-pokedex:hover {
+    background-color: #2a3490;
+}
+
+/* Estilos para tarjetas */
+.card {
+    background-color: #fff;
+    border: 2px solid #3b4cca;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}

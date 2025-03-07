@@ -1,75 +1,82 @@
 {% extends '../layout.html' %}
+{% load static %}
 {% block title %}{{ pokemon.name|title }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pokemon.css' %}">
+{% endblock %}
 {% block content %}
+
+
+
 <div class="container mt-5">
-    <!-- Encabezado con el nombre del Pokémon -->
-    <h1 class="text-center mb-4">{{ pokemon.name|title }}</h1>
+  <!-- Encabezado con el nombre del Pokémon -->
+  <h1 class="text-center mb-4">{{ pokemon.name|title }}</h1>
 
-    <!-- Imagen del Pokémon -->
-    <div class="text-center mb-4">
-        <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" class="img-fluid" width="200" height="200" />
-    </div>
+  <!-- Imagen del Pokémon -->
+  <div class="text-center mb-4">
+    <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" class="img-fluid pokemon-img" width="200" height="200" />
+  </div>
 
-    <!-- Detalles del Pokémon en una tarjeta -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h2 class="card-title text-center mb-4">Detalles</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <p><strong>Altura:</strong> {{ pokemon.height }} decímetros</p>
-                    <p><strong>Peso:</strong> {{ pokemon.weight }} hectogramos</p>
-                </div>
-                <div class="col-md-6">
-                    <p><strong>Experiencia base:</strong> {{ pokemon.base_experience }}</p>
-                    <p><strong>Orden:</strong> {{ pokemon.order }}</p>
-                </div>
-            </div>
+  <!-- Detalles del Pokémon en una tarjeta -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="card-title text-center">Detalles</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Altura:</strong> {{ pokemon.height }} decímetros</p>
+          <p><strong>Peso:</strong> {{ pokemon.weight }} hectogramos</p>
         </div>
-    </div>
-
-    <!-- Habilidades del Pokémon -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h2 class="card-title text-center mb-4">Habilidades</h2>
-            <ul class="list-group list-group-flush">
-                {% for ability in pokemon.abilities %}
-                    <li class="list-group-item">{{ ability.ability.name|title }}</li>
-                {% endfor %}
-            </ul>
+        <div class="col-md-6">
+          <p><strong>Experiencia base:</strong> {{ pokemon.base_experience }}</p>
+          <p><strong>Orden:</strong> {{ pokemon.order }}</p>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Tipos del Pokémon -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h2 class="card-title text-center mb-4">Tipos</h2>
-            <ul class="list-group list-group-flush">
-                {% for type in pokemon.types %}
-                    <li class="list-group-item">{{ type.type.name|title }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+  <!-- Habilidades del Pokémon -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="card-title text-center">Habilidades</h2>
+      <ul class="list-group list-group-flush">
+        {% for ability in pokemon.abilities %}
+          <li class="list-group-item">{{ ability.ability.name|title }}</li>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
 
-    <!-- Estadísticas del Pokémon -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h2 class="card-title text-center mb-4">Estadísticas</h2>
-            <ul class="list-group list-group-flush">
-                {% for stat in pokemon.stats %}
-                    <li class="list-group-item">
-                        <strong>{{ stat.stat.name|title }}:</strong> {{ stat.base_stat }}
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+  <!-- Tipos del Pokémon -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="card-title text-center">Tipos</h2>
+      <ul class="list-group list-group-flush">
+        {% for type in pokemon.types %}
+          <li class="list-group-item">{{ type.type.name|title }}</li>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
 
-    <!-- Botón para volver a la lista -->
-    <div class="text-center mt-4">
-        <a href="{% url 'pokemon_list' %}" class="btn btn-primary btn-lg">
-            Volver a la lista
-        </a>
+  <!-- Estadísticas del Pokémon -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="card-title text-center">Estadísticas</h2>
+      <ul class="list-group list-group-flush">
+        {% for stat in pokemon.stats %}
+          <li class="list-group-item">
+            <strong>{{ stat.stat.name|title }}:</strong> {{ stat.base_stat }}
+          </li>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
+
+  <!-- Botón para volver a la lista -->
+  <div class="text-center mt-4">
+    <a href="javascript:history.back()" class="btn btn-custom btn-lg">
+      Volver a la lista
+    </a>
+  </div>
 </div>
 {% endblock %}

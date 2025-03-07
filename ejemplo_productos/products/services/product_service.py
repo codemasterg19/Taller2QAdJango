@@ -18,11 +18,44 @@ def get_pokemons(offset=0, limit=20):
     return {}
 
 def get_pokemon(param):
-    response = requests.get(f"{API_URL}{param}")
-    if response.status_code == 200:
+    try:
+        response = requests.get(f"{API_URL}{param}", timeout=5)
+        response.raise_for_status()
         return response.json()
-    print(f"Error al obtener el Pokémon con ID/nombre: {param}")
-    return {}
+    except requests.RequestException as e:
+        print(f"Error obteniendo el Pokémon {param}: {e}")
+        return {}
 
 
+
+def load_pokemons():
+    if not Pokemon.objects.exists():
+        offset = 0
+        limit = 20
+        pokemons_to_create = []
+        
+        while True:
+            print(f"Cargando pokemons con offset {offset}")
+            data = get_pokemons(offset=offset, limit=limit)
+            results = data.get("results", [])
+            if not results:
+                break
+            for pokemon in results:
+                details = get_pokemon(pokemon["name"])
+                if details:
+                    sprites = details.get("sprites", {})
+                    image_url = sprites.get("front_default") or "https://via.placeholder.com/150"
+                    pokemons_to_create.append(Pokemon(
+                        name=details.get("name"),
+                        weight=details.get("weight"),
+                        height=details.get("height"),
+                        image=image_url
+                    ))
+            offset += limit
+            if not data.get("next"):
+                break
+        
+        Pokemon.objects.bulk_create(pokemons_to_create)
+        return f"{len(pokemons_to_create)} pokémons cargados"
+    return "Pokémons ya cargados"
 

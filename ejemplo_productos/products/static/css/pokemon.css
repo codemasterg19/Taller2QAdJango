@@ -1,0 +1,77 @@
+/* pokemon.css - Estilos para product.html */
+
+/* Fondo oscuro y degradado sutil */
+body {
+    background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+    color: #3f3697;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Limita el ancho del contenedor */
+  .container {
+    max-width: 800px;
+  }
+  
+  /* Encabezados con tipografía retro y sombra */
+  h1, h2 {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Estilo para la tarjeta principal (fondo oscuro, bordes amarillos) */
+/* Asegura que la tarjeta tenga fondo oscuro y texto blanco */
+.card {
+    background-color: #333 !important;
+    border: 2px solid #ffcb05;
+    box-shadow: 0 0 15px rgba(255, 203, 5, 0.5);
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    padding: 20px;
+    color: #ffffff !important; /* Fuerza el color blanco */
+  }
+  
+  
+  /* Títulos de las tarjetas en color amarillo */
+  .card-title {
+    color: #ffcb05;
+    margin-bottom: 20px;
+  }
+  
+  /* Lista de detalles, habilidades, tipos y estadísticas */
+  .list-group-item {
+    background-color: #444;
+    border: none;
+    border-bottom: 1px solid #555;
+    color: #ffffff;
+  }
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Establece el color de los párrafos */
+  p {
+    color: #ffffff;
+  }
+  
+  /* Imagen del Pokémon con borde y efecto circular */
+  .pokemon-img {
+    border: 3px solid #ffcb05;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 203, 5, 0.5);
+  }
+  
+  /* Botón de "Volver a la lista" */
+  .btn-custom {
+    background-color: #ffcb05;
+    border-color: #ffcb05;
+    color: #1a1a1a;
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  .btn-custom:hover {
+    background-color: #e6b800;
+    border-color: #e6b800;
+  }
+  
