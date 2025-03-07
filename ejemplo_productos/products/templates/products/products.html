@@ -1,0 +1,46 @@
+{% extends '../layout.html' %}
+{% block title %}Lista de Pokémon{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Lista de Pokémon</h1>
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pokemon in pokemons %}
+            <tr>
+                <td>{{ forloop.counter0|add:offset|add:1 }}</td>
+                <td>
+                    <img src="{{ pokemon.image_url }}" alt="{{ pokemon.name }}" class="img-fluid" width="70" height="70" />
+                </td>
+                <td class="text-capitalize">{{ pokemon.name }}</td>
+                <td>
+                    <a href="{% url 'pokemon_detail' pokemon.name %}" class="btn btn-info">
+                        Ver Detalles
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between mt-4">
+        {% if previous_offset is not None %}
+            <a href="?offset={{ previous_offset }}" class="btn btn-primary">← Anterior</a>
+        {% else %}
+            <span></span>
+        {% endif %}
+
+        {% if next_offset is not None %}
+            <a href="?offset={{ next_offset }}" class="btn btn-primary">Siguiente →</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
