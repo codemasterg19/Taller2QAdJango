@@ -1,0 +1,83 @@
+/* Container del formulario */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para la tarjeta */
+.card {
+    background-color: #fff;
+    border: 2px solid #3b4cca;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Espaciado para grupos de formulario */
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+/* Etiquetas */
+label {
+    font-weight: bold;
+    color: #3f3697;
+}
+
+/* Campos de entrada y selectores */
+input[type="text"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Encabezados del formulario */
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    color: #3b4cca;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #3b4cca;
+    border-bottom: 2px solid #3b4cca;
+    padding-bottom: 5px;
+}
+
+/* Botón personalizado para el formulario */
+.btn-custom {
+    background-color: #3b4cca;
+    color: #ffcb05;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1em;
+    text-transform: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.btn-custom:hover {
+    background-color: #2a3490;
+    color: #fff;
+}
+
+/* Ajuste para el botón "Agregar Pokémon" si lo deseas distinto */
+.btn-agregar {
+    padding: 8px 16px;
+    font-size: 1em;
+    /* Puedes ajustar más propiedades si deseas diferenciarlo */
+}

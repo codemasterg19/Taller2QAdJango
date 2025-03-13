@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Pokedex{% endblock %}</title>
+  <link rel="website icon" type="jpg" href="{% static 'image/icondex.jpg' %}">
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
@@ -12,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   {% block extra_css %}{% endblock %}
   <link rel="stylesheet" href="{% static 'css/layout.css' %}">
-  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
   <header>

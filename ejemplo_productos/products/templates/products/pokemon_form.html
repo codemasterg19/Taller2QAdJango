@@ -1,0 +1,120 @@
+{% extends '../layout.html' %}
+{% load static %}
+{% block title %}
+  {% if form.instance.pk %}Editar{% else %}Agregar{% endif %} Pokémon
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">
+        {% if form.instance.pk %}Editar{% else %}Agregar{% endif %} Pokémon
+    </h1>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+
+                
+                <!-- Datos Básicos -->
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                      <div class="d-none" id="nameError">{{ form.name.errors.0|escapejs }}</div>
+                      <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                          Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: document.getElementById('nameError').innerText,
+                            confirmButtonText: 'Aceptar'
+                          });
+                        });
+                      </script>
+                    {% endif %}
+                </div>
+                  
+                <div class="mb-3">
+                  {{ form.image.label_tag }}
+                  {{ form.image }}
+                </div>
+                <div class="mb-3">
+                  {{ form.height.label_tag }}
+                  {{ form.height }}
+                </div>
+                <div class="mb-3">
+                  {{ form.weight.label_tag }}
+                  {{ form.weight }}
+                </div>
+                <div class="mb-3">
+                  {{ form.base_experience.label_tag }}
+                  {{ form.base_experience }}
+                </div>
+                <div class="mb-3">
+                  {{ form.order.label_tag }}
+                  {{ form.order }}
+                </div>
+                
+                <!-- Estadísticas -->
+                <h3>Estadísticas</h3>
+                <div class="mb-3">
+                  {{ form.hp.label_tag }}
+                  {{ form.hp }}
+                </div>
+                <div class="mb-3">
+                  {{ form.attack.label_tag }}
+                  {{ form.attack }}
+                </div>
+                <div class="mb-3">
+                  {{ form.defense.label_tag }}
+                  {{ form.defense }}
+                </div>
+                <div class="mb-3">
+                  {{ form.special_attack.label_tag }}
+                  {{ form.special_attack }}
+                </div>
+                <div class="mb-3">
+                  {{ form.special_defense.label_tag }}
+                  {{ form.special_defense }}
+                </div>
+                <div class="mb-3">
+                  {{ form.speed.label_tag }}
+                  {{ form.speed }}
+                </div>
+                
+                <!-- Habilidades -->
+                <h3>Habilidades</h3>
+                <div class="mb-3">
+                  {{ form.primary_ability.label_tag }}
+                  {{ form.primary_ability }}
+                </div>
+                <div class="mb-3">
+                  {{ form.hidden_ability.label_tag }}
+                  {{ form.hidden_ability }}
+                </div>
+                
+                <!-- Tipos -->
+                <h3>Tipos</h3>
+                <div class="mb-3">
+                  {{ form.primary_type.label_tag }}
+                  {{ form.primary_type }}
+                </div>
+                <div class="mb-3">
+                  {{ form.secondary_type.label_tag }}
+                  {{ form.secondary_type }}
+                </div>
+                
+                <button type="submit" class="btn btn-custom btn-lg">Guardar</button>
+                {% if next %}
+                  <a href="{{ next }}" class="btn btn-custom btn-lg">Regresar</a>
+                {% else %}
+                  <a href="{% url 'pokemon_list' %}" class="btn btn-custom btn-lg">Regresar</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

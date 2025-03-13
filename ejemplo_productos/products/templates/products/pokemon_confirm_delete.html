@@ -1,0 +1,17 @@
+{% extends '../layout.html' %}
+{% load static %}
+{% block title %}Eliminar Pokémon{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Eliminar Pokémon</h1>
+    <div class="alert alert-danger" role="alert">
+        ¿Estás seguro que deseas eliminar el Pokémon <strong>{{ pokemon.name|title }}</strong>?
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="javascript:history.back()" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
+

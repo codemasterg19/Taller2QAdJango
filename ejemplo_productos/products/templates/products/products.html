@@ -4,6 +4,7 @@
 {% block content %}
 <div class="container mt-5">
   <h1 class="text-center mb-4">Lista de Pokémon</h1>
+  <a href="{% url 'pokemon_create' %}" class="btn btn-custom btn-lg btn-agregar mb-3">Agregar Pokémon</a>
 
   <!-- Tarjeta para darle un look más moderno -->
   <div class="card shadow-sm">
@@ -15,6 +16,7 @@
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Detalles</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -22,12 +24,22 @@
           <tr>
             <td>{{ pokemons.start_index|add:forloop.counter0 }}</td>
             <td>
-                <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" class="img-fluid" width="70" height="70" />
+              <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" class="img-fluid" width="70" height="70" />
             </td>
             <td class="text-capitalize">{{ pokemon.name }}</td>
             <td>
               <a href="{% url 'pokemon_detail' pokemon.name %}" class="btn btn-outline-info btn-sm">
                 Ver Detalles
+              </a>
+            </td>
+            <td>
+              <a href="{% url 'pokemon_update' pokemon.name %}?next={{ request.get_full_path }}" class="btn btn-outline-warning btn-sm">
+                Editar
+            </a>
+            
+              
+              <a href="{% url 'pokemon_delete' pokemon.name %}" class="btn btn-outline-danger btn-sm">
+                Eliminar
               </a>
             </td>
           </tr>
@@ -40,38 +52,71 @@
   <!-- Paginación numérica usando Bootstrap -->
   <nav aria-label="Page navigation" class="mt-4">
     <ul class="pagination justify-content-center">
-      {% if pokemons.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ pokemons.previous_page_number }}" aria-label="Anterior">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="visually-hidden">Anterior</span>
-        </a>
-      </li>
+  
+      {# Botón para ir a la primera página #}
+      {% if current_page > 1 %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1" aria-label="Primera">
+            <span aria-hidden="true">&laquo;&laquo;</span>
+            <span class="visually-hidden">Primera</span>
+          </a>
+        </li>
       {% else %}
-      <li class="page-item disabled">
-        <span class="page-link" aria-hidden="true">&laquo;</span>
-      </li>
+        <li class="page-item disabled">
+          <span class="page-link" aria-hidden="true">&laquo;&laquo;</span>
+        </li>
       {% endif %}
-
+  
+      {# Botón para la página anterior #}
+      {% if pokemons.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ pokemons.previous_page_number }}" aria-label="Anterior">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="visually-hidden">Anterior</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link" aria-hidden="true">&laquo;</span>
+        </li>
+      {% endif %}
+  
+      {# Números de página #}
       {% for i in page_range %}
         <li class="page-item {% if i == current_page %}active{% endif %}">
           <a class="page-link" href="?page={{ i }}">{{ i }}</a>
         </li>
       {% endfor %}
-
+  
+      {# Botón para la página siguiente #}
       {% if pokemons.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ pokemons.next_page_number }}" aria-label="Siguiente">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="visually-hidden">Siguiente</span>
-        </a>
-      </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ pokemons.next_page_number }}" aria-label="Siguiente">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="visually-hidden">Siguiente</span>
+          </a>
+        </li>
       {% else %}
-      <li class="page-item disabled">
-        <span class="page-link" aria-hidden="true">&raquo;</span>
-      </li>
+        <li class="page-item disabled">
+          <span class="page-link" aria-hidden="true">&raquo;</span>
+        </li>
+      {% endif %}
+  
+      {# Botón para ir a la última página #}
+      {% if current_page < total_pages %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ total_pages }}" aria-label="Última">
+            <span aria-hidden="true">&raquo;&raquo;</span>
+            <span class="visually-hidden">Última</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link" aria-hidden="true">&raquo;&raquo;</span>
+        </li>
       {% endif %}
     </ul>
   </nav>
+  
 </div>
 {% endblock %}

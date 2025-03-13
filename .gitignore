@@ -1,1 +1,48 @@
-/venv
+# --- Entornos virtuales ---
+venv/
+.qodo
+env/
+ENV/
+.venv/
+.venv.bak/
+
+# --- Archivos de Python compilados / caché ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Base de datos SQLite ---
+
+
+# --- Archivos de logs ---
+*.log
+
+# --- Archivos temporales de sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Archivos / carpetas de IDE (VSCode, PyCharm, etc.) ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Otros temporales ---
+*.swp
+*.bak
+*.tmp
+
+# --- Configuraciones locales (si tuvieras) ---
+local_settings.py
+*.env
+
+# --- Migraciones ---
+# Normalmente se suben, pero si prefieres no subirlas, descomenta lo siguiente:
+# products/migrations/*.py
+# !products/migrations/__init__.py
+
+# --- Build / Distribución (si usaras setup.py) ---
+build/
+dist/
+*.egg-info/
+.eggs/

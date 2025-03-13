@@ -1,10 +1,9 @@
-/* layout.css */
+/* Fondo, tipografía y estilo general */
 body {
     background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
     color: #3f3697;
     font-family: 'Roboto', sans-serif;
 }
-
 
 /* Encabezados con tipografía retro y sombra */
 h1, h2 {
@@ -25,7 +24,7 @@ header h1 {
     font-size: 2em;
 }
 
-/* Estilos para el contenedor principal */
+/* Contenedor principal */
 .container {
     background-color: rgba(255, 255, 255, 0.9);
     margin-top: 30px;
@@ -34,24 +33,7 @@ header h1 {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Botón estilo Pokedex */
-.btn-pokedex {
-    background-color: #3b4cca;
-    color: #ffcb05;
-    border: none;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.btn-pokedex:hover {
-    background-color: #2a3490;
-}
-
-/* Estilos para tarjetas */
+/* Tarjetas */
 .card {
     background-color: #fff;
     border: 2px solid #3b4cca;
@@ -65,3 +47,93 @@ header h1 {
     max-width: 100%;
     height: auto;
 }
+
+/* Botón personalizado (adaptado de .btn-pokedex) */
+.btn-custom {
+    background-color: #3b4cca;
+    color: #ffcb05;
+    border: none;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a.btn.btn-custom.btn-lg.btn-agregar {
+    background-color: #3b4cca !important; /* Azul intenso */
+    color: #ffcb05 !important;            /* Amarillo brillante */
+    border: 1px solid #ffcb05 !important;
+    padding: 6px 12px !important;         /* Menos padding para que el botón sea más compacto */
+    font-size: 1em !important;            /* Tamaño de fuente normal */
+    text-transform: none !important;      /* Sin mayúsculas forzadas */
+    font-weight: bold !important;
+    border-radius: 4px !important;        /* Bordes más suaves */
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+}
+
+a.btn.btn-custom.btn-lg.btn-agregar:hover {
+    background-color: #2a3490 !important; /* Azul más oscuro al pasar el cursor */
+    color: #fff !important;
+}
+
+
+
+
+
+.btn-custom:hover {
+    background-color: #2a3490;
+    text-decoration: none;
+    color: #ffcb05;
+}
+
+/* Estilos para la tabla de la lista de Pokémon */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #3f3697;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(59, 76, 202, 0.1); /* Resalta la fila al pasar el ratón */
+}
+
+/* Paginación personalizada */
+.pagination .page-link {
+    color: #3f3697;
+    background-color: #fff;
+    border: 1px solid #3b4cca;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #3b4cca;
+    border-color: #3b4cca;
+    color: #ffcb05;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+/* Opciones de paginación para ir a la primera y última página */
+.pagination .page-link[aria-label="Primera"],
+.pagination .page-link[aria-label="Última"] {
+    font-weight: bold;
+}
+
